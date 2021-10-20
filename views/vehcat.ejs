@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehículos Por Precio</title>
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
+    <link rel="stylesheet" href="css/all.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <% if (logincli) { %>
+    <header class="header">
+        <div class="menu-princ contenedor">
+            <a href="/logout" class="logout">Cerrar Sesión</a>
+            <% if (cambio) { %>
+                <a href="/switch/2" class="logout">Cambiar de Usuario</a>
+            <% } %>
+            <div class="btn-menu cont">
+                <a href="#">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="usrn">
+                <a href="/personal">
+                    <p><%= name %></p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="text">
+        <div class="menuctx contenedor">
+            <h2><i class="fas fa-address-book"></i>Vehículos según Categoría</h2>
+            <p>Encuentra el vehículo que tú necesites</p>
+        </div>
+    </section>
+
+    <section class="form">
+        <div class="form0 contenedor">
+            <form action="/vehcat" method="post">
+                <div class="form1">
+                    <select name="CatId" id="cat">
+                        <option value="">Seleccione categoría</option>
+                        <% cat.forEach((datos) => { %>
+                            <option value="<%= datos.CatId %>"><%= datos.CatTipo %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <button type="submit" class="btn-main">
+                    Realizar Consulta
+                </button>
+            </form>
+        </div>
+        <div class="tabla0">
+            <table class="tabla contenedor">
+                <thead>
+                    <tr>
+                        <th>N.o</th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Estado</th>
+                        <th>Precio</th>
+                        <th>Datos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                        <% for (var i = 0; i < data.length; i++) { %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= data[i].VehPlaca %></td>
+                                <td><%= data[i].VehModelo %></td>
+                                <td><%= data[i].VehMarca %></td>
+                                <td><%= data[i].VehEstado %></td>
+                                <td><%= data[i].VehPrecio %></td>
+                                <td><a href="/vendedor/<%= data[i].DatId %>">Datos del vendedor</a></td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="cont-menu">
+        <div class="logo">
+            <i class="fas fa-university"></i>
+        </div>
+        <nav>
+            <a href="/vehiculos1">Categoría</a>
+            <a href="/vehiculos2">Precio</a>    
+        </nav>
+        <div class="copy">
+            <div class="txt">
+                <p>Oceanic Bank</p>
+                <p>Copyright 2021</p>
+            </div>
+        </div>   
+    </div>
+    <% } else { %>
+        <h1><strong><%= name %></strong></h1>
+        <a href="/" class="a-login">Ir al Login</a>
+    <% } %>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu usuario aquí</title>
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <link rel="stylesheet" href="../css/all.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <section>
+        <div class="contenedor">
+            <form action="/registrousu" method="post">
+                <div class="log">
+                    <i class="fas fa-user-circle"></i><h2>Registro Usuario</h2>
+                </div>
+                <input type="text" name="UsuLogin" id="user" placeholder="Usuario" required>
+                <input type="password" name="UsuPass" id="pass" placeholder="Contraseña" required>
+                <input type="text" name="RolId" id="rol" value="<%= rol %>" readonly="readonly">
+                <input type="submit" class="btn-login" value="Registrar Usuario">
+            </form>
+        </div>
+    </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %> 
+            }).then(() => {
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+</body>
+</html>

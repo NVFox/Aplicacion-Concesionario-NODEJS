@@ -1,0 +1,265 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    min-height: 100vh;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(0, 0, 0, 0.7);
+}
+
+body{
+    background: linear-gradient(to top, rgb(206, 229, 208) 20%, rgb(243, 240, 215) 100%);
+}
+
+.contenedor{
+    max-width: 83%;
+    float: right;
+}
+
+.btn-menu{
+    position: relative;
+    float: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.usrn{
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.btn-menu a i{
+    text-align: right;
+    font-size: 30px;
+    color: black;
+}
+
+.usrn p{
+    font-size: 25px;
+    text-transform: uppercase;
+    color: black;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.usrn a{
+    text-decoration: none;
+}
+
+.logout{
+    margin-top: 17px;
+    margin-right: 20px;
+    margin-bottom: 22px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    background: rgb(216, 179, 132);
+    border-radius: 3px;
+    border: 1px solid black
+}
+
+.switch{
+    margin-top: 17px;
+    margin-right: 20px;
+    margin-bottom: 22px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    background: rgb(216, 179, 132);
+    border-radius: 3px;
+    border: 1px solid black
+}
+
+.logout:hover, .switch:hover{
+    box-shadow: 1px 1px 3px black;
+}
+
+.menu-princ{
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    background: rgba(0, 0, 0, .2);
+    width: 100%;
+    height: 10vh;
+    box-shadow: 1px 1px 3px black;
+}
+
+.menuctx{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.menuctx h2{
+    font-size: 50px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.menuctx h2 i{
+    padding-right: 15px;
+}
+
+.menuctx p{
+    font-family: 'Roboto', sans-serif;
+}
+
+.form0{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.tabla{
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+td{
+    padding: 5px;
+    border: 1px solid black;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 2px;
+    text-align: center;
+}
+
+td > input {
+    width: 120px;
+}
+
+td a:hover{
+    color: black;
+    transition: ease-in 200ms;
+}
+
+th{
+    padding: 5px;
+    border: 1px solid black;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(to top, rgb(94, 69, 75) 0%, rgb(216, 179, 132) 100%);
+    border-radius: 3px;
+}
+
+.form1{
+    padding-bottom: 20px;
+}
+
+.form1.dn{
+    display: none;
+}
+
+input{
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+select{
+    padding: 10px 17px 10px 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#estado{
+    padding: 10px 35px 10px 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-main{
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cont-menu{
+    width: 100%;
+    max-width: 17%;
+    background:  linear-gradient(to top, rgb(94, 69, 75) 20%, rgb(216, 179, 132) 100%);
+    height: 100vh;
+    position: fixed;
+    box-shadow: 1px 1px 3px black
+}
+
+.cont-menu .logo{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo > i{
+    width: fit-content;
+    font-size: 10rem;
+}
+
+.cont-menu nav{
+    padding-bottom: 20px ;
+    padding-top: 20px;
+    height: 50%;
+}
+
+.cont-menu nav > *{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    text-decoration: none;
+    padding: 25px;
+    color: black;
+    border-left: 5px solid transparent;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.cont-menu nav p i{
+    font-size: 150px;
+    text-align: center;
+}
+
+.copy{
+    height: 25%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.copy p{
+    font-size: 15px;
+    text-align: center;
+    color: white
+}
+
+.txt{
+    margin-bottom: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.txt > p{
+    font-size: 0.8rem;
+}
+
+.cont-menu nav a:hover{
+    border-left: 5px solid white;
+    background: rgba(31, 31, 31, .5);
+    color: white;
+    transition: all 300ms;
+}
+
+#id{
+    display: none;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresa tus datos</title>
+    <link rel="stylesheet" href="../css/login.css" type="text/css">
+    <link rel="stylesheet" href="../css/all.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <section>
+        <div class="contenedor">
+            <form action="/registrodat" method="post">
+                <div class="log">
+                    <i class="fas fa-user-circle"></i><h2>Registro Datos</h2>
+                </div>
+                <input type="number" name="UsuId" id="id" value="<%= id %>" readonly="readonly" required>
+                <input type="text" name="DatNombre" id="nom" placeholder="Nombres" required>
+                <input type="text" name="DatApellido" id="ape" placeholder="Apellidos" required>
+                <input type="text" name="DaTipoId" id="tip" placeholder="Tipo" required>
+                <input type="text" name="DatNumeroId" id="num" placeholder="Número" required>
+                <input type="text" name="DaTelefono" id="tel" placeholder="Telefono" required>
+                <input type="email" name="DatCorreo" id="cor" placeholder="Correo" required>
+                <input type="submit" class="btn-login" value="Registrar Datos">
+            </form>
+        </div>
+    </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if (typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %> 
+            }).then(() => {
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Vehículos</title>
+    <link rel="stylesheet" href="css/estilos.css" type="text/css">
+    <link rel="stylesheet" href="css/all.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Roboto:wght@500&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/Imagenes/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/actualizar.js"></script>
+    <script src="js/borrar.js"></script>
+</head>
+<body>
+    <% if (login) { %>
+    <header class="header">
+        <div class="menu-princ contenedor">
+            <a href="/logout" class="logout">Cerrar Sesión</a>
+            <% if (cambio) { %>
+                <a href="/switch/<%= data[0].RolId %>" class="logout">Cambiar de Usuario</a>
+            <% } %>
+            <div class="btn-menu cont">
+                <a href="#">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="usrn">
+                <a href="/personal">
+                    <p><%= name %></p>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="text">
+        <div class="menuctx contenedor">
+            <h2><i class="fas fa-address-book"></i>Página de Vehículos</h2>
+            <p>Introduce, edita o borra los registros ya existentes</p>
+        </div>
+    </section>
+
+    <section class="form">
+        <div class="form0 contenedor">
+            <form action="/add" method="post">
+                <div class="form1">
+                    <input type="text" name="VehPlaca" placeholder="Placa" class="campo" required>
+                </div>
+                <div class="form1" id="id">
+                    <input type="text" name="DatId" value="<%= dat[0].DatId %>" class="campo" readonly>
+                </div>
+                <div class="form1">
+                    <select name="CatId" id="cat">
+                        <option value="">Seleccione categoría</option>
+                        <% cat.forEach((datos) => { %>
+                            <option value="<%= datos.CatId %>"><%= datos.CatTipo %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form1">
+                    <input type="number" name="VehModelo" placeholder="Modelo (año)" class="campo" required>
+                </div>
+                <div class="form1">
+                    <input type="text" name="VehMarca" placeholder="Marca" class="campo" required>
+                </div>
+                <div class="form1">
+                    <select name="VehEstado" id="estado">
+                        <option value="">Seleccione estado</option>
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Usado">Usado</option>
+                    </select>
+                </div>
+                <div class="form1">
+                    <input type="text" name="VehPrecio" placeholder="Precio" class="campo" required>
+                </div>
+                <button type="submit" class="btn-main">
+                    Guardar Registro
+                </button>
+            </form>
+        </div>
+        <div class="tabla0">
+            <form action="" name="frm" id="frm">
+                <table class="tabla contenedor">
+                    <thead>
+                        <tr>
+                            <th>N.o</th>
+                            <th>Placa</th>
+                            <th>Categoría</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Actualizar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                            <% for (var i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <td><%= (i + 1) %></td>
+                                    <td><input type="text" name="VehPlaca" value="<%= data[i].VehPlaca %>" class="pla"></td>
+                                    <td><select name="CatId" id="cat">
+                                        <option value="<%= data[i].CatId %>"><%= data[i].CatTipo %></option>
+                                        <% cat.forEach((datos) => { %>
+                                            <option value="<%= datos.CatId %>"><%= datos.CatTipo %></option>
+                                        <% }) %>
+                                    </select></td>
+                                    <td><input type="number" name="VehModelo" value="<%= data[i].VehModelo %>" class="mod"></td>
+                                    <td><input type="text" name="VehMarca" value="<%= data[i].VehMarca %>" class="mar"></td>
+                                    <td><input type="text" name="VehEstado" value="<%= data[i].VehEstado %>" class="est"></td>
+                                    <td><input type="number" name="VehPrecio" value="<%= data[i].VehPrecio %>" class="pre"></td>
+                                    <td><input type="submit" name="btnact" value="Actualizar" id="btnact" class="btnact"></td>
+                                    <td><input type="submit" name="btneli" value="Borrar" id="btneli" class="btneli"></td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </section>
+
+    <div class="cont-menu">
+        <div class="logo">
+            <i class="fas fa-university"></i>
+        </div>
+        <nav>
+            <a href="/vehiculos">Vehículos</a>   
+        </nav>
+        <div class="copy">
+            <div class="txt">
+                <p>Oceanic Bank</p>
+                <p>Copyright 2021</p>
+            </div>
+        </div>   
+    </div>
+    <% } else { %>
+        <h1><strong><%= name %></strong></h1>
+        <a href="/" class="a-login">Ir al Login</a>
+    <% } %>
+</body>
+</html>
